@@ -87,8 +87,8 @@ interface IShowToastOptions {
 }
 
 interface ILoadingOptions {
-  show?: (content?: string) => void
-  hide?: () => void
+  show: (content?: string) => void
+  hide: () => void
 }
 
 interface IShowModalOptions {

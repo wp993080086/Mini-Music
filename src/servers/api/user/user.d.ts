@@ -1,6 +1,7 @@
 export interface IPhoneLogin {
   phone: string
-  password: string
+  password?: string
+  captcha?: string
 }
 
 export interface ISendCaptcha {

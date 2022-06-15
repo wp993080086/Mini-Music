@@ -8,6 +8,12 @@
   },
   "pages": [
     {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
       "path": "pages/home/index",
       "style": {
         "navigationStyle": "custom"
@@ -23,12 +29,6 @@
       "path": "pages/charts/index",
       "style": {
         "navigationBarTitleText": "图表"
-      }
-    },
-    {
-      "path": "pages/login/index",
-      "style": {
-        "navigationBarTitleText": "登录"
       }
     }
   ],

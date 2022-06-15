@@ -1,8 +1,3 @@
-/* 通用盒子 */
-* {
-	margin: 0;
-}
-
 page {
 	width: 100%;
 	height: 100%;
@@ -13,6 +8,15 @@ page {
 		Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
 		sans-serif;
 	color: #000000;
+}
+view,
+text,
+image,
+button,
+input,
+textarea {
+	margin: 0;
+	padding: 0;
 }
 
 image {
@@ -35,9 +39,4 @@ textarea {
 
 view {
 	box-sizing: border-box;
-}
-
-button{
-	padding-left: 0 !important;
-	padding-right: 0 !important;
 }

@@ -11,11 +11,13 @@ import {
 
 const Interface = {
   /**
-   * 手机号码登录
+   * 登录
    * @param {String} phone 账号
    * @param {String} password 密码
+   * @param {String} captcha 验证码 传入后 password 参数将失效
    */
   phoneLogin(param: IPhoneLogin) {
+    console.log(param)
     return Request.post('/login/cellphone', { ...param })
   },
   /**

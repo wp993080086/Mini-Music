@@ -1,5 +1,5 @@
 import { Toast } from '@/utils/toast'
-import { THeaderOption, TPatamOption } from './requestType'
+import { THeaderOption, TPatamOption, TPostFn } from './requestType'
 
 const baseUrl = import.meta.env.VITE_baseUrl
 const headerOption: THeaderOption = {
@@ -27,73 +27,82 @@ const getParamDispose = (url: string, param: TAnyObject) => {
   return newUrl
 }
 
-const Request = {
-  /**
-   * Post请求
-   * @param {String} api 接口地址
-   * @param {Object} param 参数
-   * @param {Object} option 配置
-   * @return {Promise}
-   */
-  post: (api: string, param: TAnyObject = {}, option: TPatamOption = { isToken: true }) => {
-    const url = `${baseUrl}${api}?time=${new Date().getTime()}`
-    if (option.isToken) headerOption.token = ''
-    return new Promise((resolve, reject) => {
-      uni.request({
-        url,
-        data: { ...param },
-        method: 'POST',
-        timeout: 30000,
-        header: headerOption,
-        success: res => {
-          if (res.statusCode === 200) {
-            resolve(res.data)
-          } else {
-            reject(res)
-          }
-        },
-        fail: res => {
+/**
+ * Post请求
+ * @param {String} api 接口地址
+ * @param {Object} param 参数
+ * @param {Object} option 配置
+ * @return {Promise}
+ */
+const post: TPostFn = (
+  api: string,
+  param: TAnyObject = {},
+  option: TPatamOption = { isToken: true }
+) => {
+  const url = `${baseUrl}${api}?time=${new Date().getTime()}`
+  if (option.isToken) headerOption.token = ''
+  return new Promise((resolve, reject) => {
+    uni.request({
+      url,
+      data: { ...param },
+      method: 'POST',
+      timeout: 30000,
+      header: headerOption,
+      success: (res: TAny) => {
+        if (res.statusCode === 200) {
+          resolve(res.data)
+        } else {
           reject(res)
-          setTimeout(() => {
-            Toast('服务器内部错误，请稍后重试 !')
-          }, 0)
         }
-      })
+      },
+      fail: res => {
+        reject(res)
+        setTimeout(() => {
+          Toast('服务器内部错误，请稍后重试 !')
+        }, 0)
+      }
     })
-  },
-  /**
-   * Get请求
-   * @param {String} api 接口地址
-   * @param {Object} param 参数
-   * @param {Object} option 配置
-   * @return {Promise}
-   */
-  get: (api: string, param: TAnyObject = {}, option: TPatamOption = { isToken: true }) => {
-    const url = getParamDispose(`${baseUrl}${api}`, { time: new Date().getTime(), ...param })
-    if (option.isToken) headerOption.token = ''
-    return new Promise((resolve, reject) => {
-      uni.request({
-        url,
-        data: {},
-        method: 'GET',
-        timeout: 30000,
-        header: headerOption,
-        success: res => {
-          if (res.statusCode === 200) {
-            resolve(res.data)
-          } else {
-            reject(res)
-          }
-        },
-        fail: res => {
+  })
+}
+/**
+ * Get请求
+ * @param {String} api 接口地址
+ * @param {Object} param 参数
+ * @param {Object} option 配置
+ * @return {Promise}
+ */
+const get: TPostFn = (
+  api: string,
+  param: TAnyObject = {},
+  option: TPatamOption = { isToken: true }
+) => {
+  const url = getParamDispose(`${baseUrl}${api}`, { time: new Date().getTime(), ...param })
+  if (option.isToken) headerOption.token = ''
+  return new Promise((resolve, reject) => {
+    uni.request({
+      url,
+      data: {},
+      method: 'GET',
+      timeout: 30000,
+      header: headerOption,
+      success: (res: TAny) => {
+        if (res.statusCode === 200) {
+          resolve(res.data)
+        } else {
           reject(res)
-          setTimeout(() => {
-            Toast('服务繁忙，请稍后重试 !')
-          }, 0)
         }
-      })
+      },
+      fail: res => {
+        reject(res)
+        setTimeout(() => {
+          Toast('服务繁忙，请稍后重试 !')
+        }, 0)
+      }
     })
-  }
+  })
 }
 
-export default Request
+export default {
+  post,
+  get
+}

@@ -6,3 +6,15 @@ export type THeaderOption = {
 export type TPatamOption = {
   isToken?: boolean
 }
+
+type TRequestResult = {
+  code: number
+  data: TAny
+  message: string
+}
+
+export type TPostFn = (
+  api: string,
+  param?: TAnyObject,
+  option?: TPatamOption
+) => Promise<TRequestResult>
