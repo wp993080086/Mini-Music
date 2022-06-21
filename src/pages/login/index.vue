@@ -1,24 +1,33 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import PInput from '@/components/input/index.vue'
 import userApi from '@/servers/api/user'
-import { Toast, Loading } from '@/utils/toast'
-import { IPhoneLogin } from '@/servers/api/user/user'
+import { Toast } from '@/utils/toast'
+import { userInfoStoreModule } from '@/store/index'
+import { sleep, setStorage, switchTab } from '@/utils'
+import PInput from '@/components/input/index.vue'
 
+/*
+ 登录方式切换
+*/
+const isPhoneLogin = ref(true)
+const handleChangeloginType = () => {
+  isPhoneLogin.value = !isPhoneLogin.value
+}
+
+/*
+ 获取验证码
+ 登录
+*/
+const userInfoStore = userInfoStoreModule()
 const userAccount = reactive({
   phone: '',
   password: '',
   captcha: ''
 })
-const isPhoneLogin = ref(true)
-// 切换登录方式
-const handleChangeloginType = () => {
-  isPhoneLogin.value = !isPhoneLogin.value
-}
-
 const countDown = ref(60)
 const verificationLoading = ref(false)
 const isGetVerification = ref(false)
+const loginLoading = ref(false)
 // 获取验证码
 const getVerificationCode = async () => {
   if (!userAccount.phone) {
@@ -31,7 +40,6 @@ const getVerificationCode = async () => {
     const res = await userApi.sendCaptcha({
       phone: userAccount.phone
     })
-    console.log(res)
     if (res.code === 200) {
       isGetVerification.value = true
       const timer = setInterval(() => {
@@ -51,19 +59,40 @@ const getVerificationCode = async () => {
 }
 // 登录
 const userLogin = async () => {
-  Loading.show()
   try {
     const param = JSON.parse(JSON.stringify(userAccount))
     isPhoneLogin.value ? delete param.password : delete param.captcha
+    if (!param.phone) return
+    if (isPhoneLogin.value) {
+      if (!param.captcha) return
+    } else {
+      if (!param.password) return
+    }
+    loginLoading.value = true
     const res = await userApi.phoneLogin(param)
-    Loading.hide()
-    console.log(res)
+    loginLoading.value = false
     if (res.code === 200) {
+      const cookie = res.cookie
+      const token = res.token
+      const userInfo = res.profile
+      userInfoStore.setUserCookie(cookie)
+      userInfoStore.setUserToken(token)
+      userInfoStore.setUserInfo(userInfo)
+      await setStorage('cookie', cookie)
+      await setStorage('token', token)
+      await setStorage('userInfo', userInfo)
       Toast('登录成功', { icon: 'success' })
+      await sleep(1000)
+      switchTab('../home/index')
     }
   } catch (error) {
-    Loading.hide()
+    loginLoading.value = false
   }
+}
+const fn = () => {
+  uni.switchTab({
+    url: '../home/index'
+  })
 }
 </script>
 
@@ -71,7 +100,7 @@ const userLogin = async () => {
   <view class="login_box">
     <view class="music_img_box">
       <!-- <image src="../../static/images/music.gif" /> -->
-      <image src="https://video-public.canva.cn/VAEwgVS_MEw/v/59f9ee8c1a.gif" />
+      <image src="https://video-public.canva.cn/VAEwgVS_MEw/v/59f9ee8c1a.gif" @click="fn" />
     </view>
     <view class="account_box">
       <p-input
@@ -123,7 +152,9 @@ const userLogin = async () => {
       </text>
     </view>
     <view class="btn_box">
-      <u-button plain :ripple="true" ripple-bg-color="#a0cfff" @click="userLogin"> 登录 </u-button>
+      <u-button plain ripple ripple-bg-color="#a0cfff" @click="userLogin" :loading="loginLoading">
+        登录
+      </u-button>
     </view>
   </view>
 </template>

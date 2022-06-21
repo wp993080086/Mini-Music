@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { userInfoStore } from '../../store/index'
+import { userInfoStoreModule } from '@/store/index'
 
 const textColor = ref('red')
-const userStore = userInfoStore()
+const userStore = userInfoStoreModule()
 const userInfo = computed(() => {
-  return userStore.getUserInfo().userName
+  return userStore.getUserInfo().nickname
 })
 </script>
 

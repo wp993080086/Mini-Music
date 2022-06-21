@@ -11,6 +11,7 @@ type TRequestResult = {
   code: number
   data: TAny
   message: string
+  [key: string]: TAny
 }
 
 export type TPostFn = (

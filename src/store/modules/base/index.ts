@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { IuserInfo } from './base'
 
 // 使用setup模式定义
-const userModule = defineStore('base', () => {
+const baseStoreModule = defineStore('base', () => {
   const data = reactive({
     name: 'user',
     userInfo: {
@@ -27,4 +27,4 @@ const userModule = defineStore('base', () => {
   }
 })
 
-export default userModule
+export default baseStoreModule

@@ -1,2 +1,2 @@
-export { default as baseStore } from './modules/base/index'
-export { default as userInfoStore } from './modules/userInfo/index'
+export { default as baseStoreModule } from './modules/base/index'
+export { default as userInfoStoreModule } from './modules/user-info/index'

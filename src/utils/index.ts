@@ -28,7 +28,7 @@ export const getSystemInfo = () => {
  * @param  {String} keys key
  * @param  {any} datas 缓存的数据
  */
-export const setStorage = (keys: string, datas: TAnyObject) => {
+export const setStorage = (keys: string, datas: TAnyObject | string | number) => {
   return new Promise((resolve, reject) => {
     uni.setStorage({
       key: keys,
@@ -192,4 +192,86 @@ export const debounce = (wait: number, fn: TAnyFunc, immediate = false) => {
     clearTimeout(timeout)
   }
   return debounced
+}
+/**
+ * 跳转到tabBar页面，并关闭其他所有非tabBar页面
+ * @param {String} url 页面路径
+ */
+export const switchTab = (url: string) => {
+  uni.switchTab({
+    url,
+    fail: () => {
+      uni.showToast({
+        title: '页面跳转失败',
+        duration: 1500,
+        icon: 'error'
+      })
+    }
+  })
+}
+/**
+ * 保留当前页面，跳转到应用内的某个页面
+ * @param {String} url 页面路径
+ */
+export const navigateTo = (url: string) => {
+  uni.navigateTo({
+    url,
+    animationType: 'zoom-fade-out',
+    fail: () => {
+      uni.showToast({
+        title: '页面跳转失败',
+        duration: 1500,
+        icon: 'error'
+      })
+    }
+  })
+}
+/**
+ * 关闭当前页面，跳转到应用内的某个页面
+ * @param {String} url 页面路径
+ */
+export const redirectTo = (url: string) => {
+  uni.redirectTo({
+    url,
+    fail: () => {
+      uni.showToast({
+        title: '页面跳转失败',
+        duration: 1500,
+        icon: 'error'
+      })
+    }
+  })
+}
+/**
+ * 关闭所有页面，打开到应用内的某个页面
+ * @param {String} url 页面路径
+ */
+export const reLaunch = (url: string) => {
+  uni.reLaunch({
+    url,
+    fail: () => {
+      uni.showToast({
+        title: '页面跳转失败',
+        duration: 1500,
+        icon: 'error'
+      })
+    }
+  })
+}
+/**
+ * 返回上一页
+ * @param {Number} delta 返回的页数
+ */
+export const navigateBack = (delta = 1) => {
+  uni.navigateBack({
+    delta,
+    animationType: 'zoom-in',
+    fail: () => {
+      uni.showToast({
+        title: '页面跳转失败',
+        duration: 1500,
+        icon: 'error'
+      })
+    }
+  })
 }
