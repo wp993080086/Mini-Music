@@ -16,19 +16,19 @@
     {
       "path": "pages/home/index",
       "style": {
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "首页推荐"
       }
     },
     {
       "path": "pages/ranking/index",
       "style": {
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "排行榜单"
       }
     },
     {
       "path": "pages/my/index",
       "style": {
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "个人中心"
       }
     },
     {

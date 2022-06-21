@@ -16,7 +16,7 @@
 }
 
 //扩展点击区域(多用于移动端)
-@mixin extend-click() {
+@mixin extend_click() {
   position: relative;
   &:before {
     content: "";

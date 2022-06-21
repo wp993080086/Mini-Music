@@ -89,18 +89,13 @@ const userLogin = async () => {
     loginLoading.value = false
   }
 }
-const fn = () => {
-  uni.switchTab({
-    url: '../home/index'
-  })
-}
 </script>
 
 <template>
   <view class="login_box">
     <view class="music_img_box">
       <!-- <image src="../../static/images/music.gif" /> -->
-      <image src="https://video-public.canva.cn/VAEwgVS_MEw/v/59f9ee8c1a.gif" @click="fn" />
+      <image src="https://video-public.canva.cn/VAEwgVS_MEw/v/59f9ee8c1a.gif" />
     </view>
     <view class="account_box">
       <p-input
