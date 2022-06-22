@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import { getSystemInfo } from '@/utils'
+import { baseStoreModule } from '@/store'
+import { ISystemInfo } from '@/store/modules/base/base'
 
-onLaunch(() => {
-  console.log('App Launch')
+onLaunch(async () => {
+  const baseStore = baseStoreModule()
+  const res = await getSystemInfo()
+  baseStore.setSystemInfo(res as ISystemInfo)
 })
 onShow(() => {
   console.log('App Show')

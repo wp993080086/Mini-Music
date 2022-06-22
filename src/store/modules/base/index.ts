@@ -1,29 +1,24 @@
 import { reactive, toRefs } from 'vue'
 import { defineStore } from 'pinia'
-import { IuserInfo } from './base'
+import { IBaseData, ISystemInfo } from './base'
 
-// 使用setup模式定义
 const baseStoreModule = defineStore('base', () => {
-  const data = reactive({
-    name: 'user',
-    userInfo: {
-      userName: '卡卡罗特',
-      userId: '100'
-    }
+  const baseData: IBaseData = reactive({
+    systemInfo: {} as ISystemInfo
   })
 
-  const getUserInfo = () => {
-    return data.userInfo
+  const getSystemInfo = () => {
+    return baseData.systemInfo
   }
 
-  const setUserInfo = (obj: IuserInfo) => {
-    data.userInfo = obj
+  const setSystemInfo = (obj: ISystemInfo) => {
+    baseData.systemInfo = obj
   }
 
   return {
-    ...toRefs(data),
-    getUserInfo,
-    setUserInfo
+    ...toRefs(baseData),
+    getSystemInfo,
+    setSystemInfo
   }
 })
 
