@@ -2,21 +2,11 @@
 import { watch, ref, onMounted } from 'vue'
 
 interface Props {
-  placeholder: string
-  type: string
-  border?: boolean
   value: string
-  maxlength?: number
-  pStyle: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  placeholder: '',
-  type: '',
-  border: false,
-  value: '',
-  maxlength: 20,
-  pStyle: ''
+  value: ''
 })
 // 输入框值
 const iptValue = ref('')
@@ -59,15 +49,9 @@ watch(iptValue, (newVal: string) => {
   <view class="ipt_box">
     <view class="ipt">
       <u-input
-        :trim="true"
-        :border="props.border"
-        clearable
-        v-model="iptValue"
-        :maxlength="props.maxlength"
-        :placeholder="props.placeholder"
-        :placeholder-style="pStyle"
         :password-icon="closeVisible"
-        :type="props.type"
+        v-bind="$attrs"
+        v-model="iptValue"
         @focus="focusFunc"
         @blur="blurFunc"
       />
@@ -87,16 +71,13 @@ watch(iptValue, (newVal: string) => {
 <style lang="scss" scoped>
 .ipt_box {
   display: flex;
-  width: 100%;
-  height: auto;
+  @include set_w_h(all, auto);
   .ipt {
     width: calc(100% - 80rpx);
   }
   .ipt_r {
+    @include flex_c;
     width: 80rpx;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
   }
 }
 </style>

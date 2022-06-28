@@ -102,14 +102,22 @@ const userLogin = async () => {
         type="text"
         placeholder="请输入手机号"
         v-model:value="userAccount.phone"
-        :pStyle="'color: #ffffff;'"
+        :placeholder-style="'color: #ffffff;'"
+        :trim="true"
+        :border="false"
+        clearable
+        :maxlength="20"
       />
       <template v-if="!isPhoneLogin">
         <p-input
           type="password"
           placeholder="请输入密码"
           v-model:value="userAccount.password"
-          :pStyle="'color: #ffffff;'"
+          :placeholder-style="'color: #ffffff;'"
+          :trim="true"
+          :border="false"
+          clearable
+          :maxlength="20"
         />
       </template>
       <template v-else>
@@ -119,7 +127,11 @@ const userLogin = async () => {
               type="text"
               placeholder="请输入验证码"
               v-model:value="userAccount.captcha"
-              :pStyle="'color: #ffffff;'"
+              :placeholder-style="'color: #ffffff;'"
+              :trim="true"
+              :border="false"
+              clearable
+              :maxlength="20"
             />
           </view>
           <view class="verification_code_btn_box">
@@ -159,19 +171,16 @@ const userLogin = async () => {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  @include set_w_h(all, all);
   padding: 0rpx 64rpx;
   background-color: #409eff;
   .music_img_box {
-    width: 360rpx;
-    height: 332rpx;
+    @include set_w_h(360, 332);
     margin-top: 12vh;
     margin-bottom: 60rpx;
   }
   .account_box {
-    width: 100%;
-    height: auto;
+    @include set_w_h(all, auto);
     & ::v-deep .ipt_box {
       border-bottom: 2rpx solid #ffffff;
     }
@@ -185,42 +194,36 @@ const userLogin = async () => {
       color: #ffffff !important;
     }
     .verification_code_box {
-      @include center();
-      width: 100%;
-      height: 100rpx;
+      @include flex_c;
+      @include set_w_h(all, 100);
       .verification_code_ipt {
         width: calc(100% - 220rpx);
       }
       .verification_code_btn_box {
-        display: flex;
-        align-items: center;
+        @include flex_c;
         justify-content: flex-end;
-        width: 220rpx;
-        height: 100%;
+        @include set_w_h(220, all);
         border-bottom: 2rpx solid #ffffff;
         & ::v-deep .u-btn {
           color: #409eff;
-          width: 200rpx;
+          @include set_w_h(200, 70);
           background-color: #ffffff;
           padding: 0;
-          height: 70rpx;
           font-size: 26rpx;
         }
         .verification_code_dwon {
-          @include center();
+          @include flex_c;
+          @include set_w_h(200, 70);
           background-color: #ffffff;
           color: #409eff;
           font-size: 28rpx;
-          width: 200rpx;
-          height: 70rpx;
           border-radius: 10rpx;
         }
       }
     }
   }
   .chenge_text_box {
-    width: 100%;
-    height: 120rpx;
+    @include set_w_h(all, 120);
     text-align: right;
     .chenge_text {
       color: #ffffff;

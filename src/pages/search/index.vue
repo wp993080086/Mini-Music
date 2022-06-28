@@ -40,7 +40,7 @@ const gets = async () => {
 
 <style scoped lang="scss">
 .home {
-  @include center();
+  @include flex_c;
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;

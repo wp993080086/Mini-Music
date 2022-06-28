@@ -19,5 +19,5 @@ onHide(() => {
 
 <style lang="scss">
 @import 'vk-uview-ui/index.scss';
-@import '../src/static/styles/normalize.css';
+@import '../src/static/styles/reset.css';
 </style>

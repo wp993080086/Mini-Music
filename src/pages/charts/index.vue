@@ -26,7 +26,7 @@ const chartData = ref({
 
 <style scoped lang="scss">
 .content {
-  @include center();
+  @include flex_c;
   flex-direction: column;
 }
 </style>
