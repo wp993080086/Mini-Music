@@ -71,7 +71,7 @@ watch(iptValue, (newVal: string) => {
 <style lang="scss" scoped>
 .ipt_box {
   display: flex;
-  @include set_w_h(all, auto);
+  @include set_w_h(fill, auto);
   .ipt {
     width: calc(100% - 80rpx);
   }

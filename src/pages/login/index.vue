@@ -171,7 +171,7 @@ const userLogin = async () => {
   display: flex;
   align-items: center;
   flex-direction: column;
-  @include set_w_h(all, all);
+  @include set_w_h();
   padding: 0rpx 64rpx;
   background-color: #409eff;
   .music_img_box {
@@ -180,7 +180,7 @@ const userLogin = async () => {
     margin-bottom: 60rpx;
   }
   .account_box {
-    @include set_w_h(all, auto);
+    @include set_w_h(fill, auto);
     & ::v-deep .ipt_box {
       border-bottom: 2rpx solid #ffffff;
     }
@@ -195,14 +195,14 @@ const userLogin = async () => {
     }
     .verification_code_box {
       @include flex_c;
-      @include set_w_h(all, 100);
+      @include set_w_h(fill, 100);
       .verification_code_ipt {
         width: calc(100% - 220rpx);
       }
       .verification_code_btn_box {
         @include flex_c;
         justify-content: flex-end;
-        @include set_w_h(220, all);
+        @include set_w_h(220, fill);
         border-bottom: 2rpx solid #ffffff;
         & ::v-deep .u-btn {
           color: #409eff;
@@ -223,7 +223,7 @@ const userLogin = async () => {
     }
   }
   .chenge_text_box {
-    @include set_w_h(all, 120);
+    @include set_w_h(fill, 120);
     text-align: right;
     .chenge_text {
       color: #ffffff;

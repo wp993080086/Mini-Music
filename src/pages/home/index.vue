@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import homeHttp from '@/servers/api/home'
 import { baseStoreModule } from '@/store'
+import titleNav from '@/components/title-nav/index.vue'
 import { IBannerItem, ISongListItem, INewSongListItem, IMvListItem, ISingerListItem } from './home'
 
 const baseStore = baseStoreModule()
@@ -45,42 +46,49 @@ const getRecommendSingerList = async () => {
   homeData.singerList = res.artists
 }
 onLoad(() => {
-  getBannerList()
-  getRecommendSongList()
+  // getBannerList()
+  // getRecommendSongList()
   getRecommendNewSongList()
-  getRecommendMvList()
-  getRecommendSingerList()
+  // getRecommendMvList()
+  // getRecommendSingerList()
 })
 </script>
 
 <template>
   <view class="home_box">
+    <!-- 搜索框 -->
     <view class="search_box">
       <view class="search_main">
         <text class="search_text">搜索</text>
       </view>
     </view>
+    <!-- banner图 -->
     <view class="switch_box">
-      <swiper class="swiper" circular :indicator-dots="true" autoplay :interval="3000">
+      <!-- <swiper class="swiper" circular :indicator-dots="true" autoplay :interval="3000">
         <swiper-item v-for="(item, index) in homeData.bannerList" :key="index">
           <view class="swiper_item">
             <image :src="item.pic" />
           </view>
         </swiper-item>
-      </swiper>
+      </swiper> -->
+    </view>
+    <!-- 推荐新音乐 -->
+    <title-nav title="推荐新音乐" path="../home/index" />
+    <view class="recommend_new_song_box">
+      <h1>1</h1>
     </view>
   </view>
 </template>
 
 <style scoped lang="scss">
 .home_box {
-  @include set_w_h(all, all);
+  @include set_w_h();
   .search_box {
     width: 100%;
     padding: 20rpx 32rpx;
     .search_main {
       @include flex_c;
-      @include set_w_h(all, 60);
+      @include set_w_h(fill, 60);
       background-color: $white;
       border-radius: 30rpx;
       .search_text {
@@ -89,13 +97,17 @@ onLoad(() => {
     }
   }
   .switch_box {
-    @include set_w_h(all, 320);
+    @include set_w_h(fill, 320);
     .swiper {
-      @include set_w_h(all, all);
+      @include set_w_h();
       .swiper_item {
-        @include set_w_h(all, all);
+        @include set_w_h();
       }
     }
+  }
+  .recommend_new_song_box {
+    @include set_w_h(fill, 240);
+    padding: 0rpx 32rpx;
   }
 }
 </style>

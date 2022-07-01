@@ -8,6 +8,7 @@ $black: #000000;
 $red: #f56c6c;
 $green: #67c23a;
 $blue: #409eff;
+$bg: #fafafa;
 
 // 单行超出省略号
 @mixin omit {
@@ -18,7 +19,7 @@ $blue: #409eff;
 
 // 多行超出省略号
 @mixin omit2 {
-  word-break: break-all;
+  word-break: break-fill;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -47,15 +48,15 @@ $blue: #409eff;
 }
 
 // 宽高
-@mixin set_w_h($w: all, $h: all) {
-  @if ($w == all) {
+@mixin set_w_h($w: fill, $h: fill) {
+  @if ($w == fill) {
     width: 100%;
   } @else if ($w == auto) {
     width: auto;
   } @else {
     width: #{$w}rpx;
   }
-  @if ($h == all) {
+  @if ($h == fill) {
     height: 100%;
   } @else if ($h == auto) {
     height: auto;
