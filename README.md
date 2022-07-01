@@ -2,18 +2,18 @@
 
 <div align=center>
   
-![Vite](https://img.shields.io/badge/2.9.1-Vite-orange)
-![TypeScript](https://img.shields.io/badge/4.6.3-TypeScript-lightgrey)
-![Vue](https://img.shields.io/badge/3.2.31-Vue-brightgreen)
-![vk-uview-ui](https://img.shields.io/badge/1.3.3-vk--uview--ui-blueviolet)
+![Pinia](https://img.shields.io/badge/2.0.12-Pinia-yellow)
+![uni-ui](https://img.shields.io/badge/1.4.12-uni--ui-409EFF)
+![Sass](https://img.shields.io/badge/1.49.9-Sass-orange)
   
 </div>
 
 <div align=center>
   
-![Pinia](https://img.shields.io/badge/2.0.12-Pinia-yellow)
-![uni-ui](https://img.shields.io/badge/1.4.12-uni--ui-409EFF)
-![Sass](https://img.shields.io/badge/1.49.9-Sass-orange)
+![Vite](https://img.shields.io/badge/2.9.1-Vite-orange)
+![TypeScript](https://img.shields.io/badge/4.6.3-TypeScript-lightgrey)
+![Vue](https://img.shields.io/badge/3.2.31-Vue-brightgreen)
+![vk-uview-ui](https://img.shields.io/badge/1.3.3-vk--uview--ui-blueviolet)
   
 </div>
 
