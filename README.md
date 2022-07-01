@@ -1,3 +1,5 @@
+# 一个简洁的音乐小程序
+
 <div align=center>
   
 ![Vite](https://img.shields.io/badge/2.9.1-Vite-orange)
@@ -6,6 +8,7 @@
 ![vk-uview-ui](https://img.shields.io/badge/1.3.3-vk--uview--ui-blueviolet)
   
 </div>
+
 <div align=center>
   
 ![Pinia](https://img.shields.io/badge/2.0.12-Pinia-yellow)
@@ -14,11 +17,13 @@
   
 </div>
 
-# ⚡️ 简介
+## 👂 前言
 
-一个`uniApp`开发的的音乐小程序。
+> 感谢 [binaryify](https://github.com/Binaryify) 大佬的 `NeteaseCloudMusicApi` 接口支持 😜
 
-# 🚀 开发
+- [接口文档地址](https://binaryify.github.io/NeteaseCloudMusicApi)
+
+## 🚀 开发
 
 1. 安装
 
@@ -34,7 +39,7 @@ npm run serve
 
 `运行成功后，使用微信开发者工具，选择mp-weixin目录并打开（路径：dist/dev/mp-weixin），即可预览。`
 
-# 📦️ 多环境打包
+## 📦️ 多环境打包
 
 - 测试环境打包
 
@@ -50,7 +55,7 @@ npm run build
 
 `打包完成后，使用微信开发者工具，选择mp-weixin目录并打开，目录路径：dist/build/mp-weixin，在微信开发者工具中点击上传即可。`
 
-# 🔧 代码检查修复
+## 🔧 代码检查修复
 
 - 格式检查修复
 
@@ -58,7 +63,7 @@ npm run build
 npm run lint
 ```
 
-# 📚 目录
+## 📚 目录
 
 ```
 ├─ .env.xxx // 各环境的配置文件
