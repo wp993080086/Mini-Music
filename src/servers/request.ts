@@ -1,5 +1,5 @@
 import { Toast } from '@/utils/toast'
-import { THeaderOption, TPatamOption, TPostFn } from './requestType'
+import { THeaderOption, TPatamOption, TPostFn } from './request-type'
 
 const baseUrl = import.meta.env.VITE_baseUrl
 const headerOption: THeaderOption = {

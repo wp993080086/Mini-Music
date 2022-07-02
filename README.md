@@ -2,17 +2,17 @@
 
 <div align=center>
   
-![Pinia](https://img.shields.io/badge/2.0.12-Pinia-yellow)
-![uni-ui](https://img.shields.io/badge/1.4.12-uni--ui-409EFF)
-![Sass](https://img.shields.io/badge/1.49.9-Sass-orange)
+![pinia](https://img.shields.io/badge/2.0.12-pinia-yellow)
+![vue](https://img.shields.io/badge/3.2.31-vue-brightgreen)
+![sass](https://img.shields.io/badge/1.49.9-sass-orange)
   
 </div>
 
 <div align=center>
   
-![Vite](https://img.shields.io/badge/2.9.1-Vite-orange)
-![TypeScript](https://img.shields.io/badge/4.6.3-TypeScript-lightgrey)
-![Vue](https://img.shields.io/badge/3.2.31-Vue-brightgreen)
+![vite](https://img.shields.io/badge/2.9.1-vite-orange)
+![typeScript](https://img.shields.io/badge/4.6.3-typeScript-lightgrey)
+![uni-ui](https://img.shields.io/badge/1.4.12-uni--ui-409EFF)
 ![vk-uview-ui](https://img.shields.io/badge/1.3.3-vk--uview--ui-blueviolet)
   
 </div>
@@ -44,7 +44,7 @@ npm run serve
 - 测试环境打包
 
 ```
-npm run build:test
+npm run build_test
 ```
 
 - 生产环境打包

@@ -39,8 +39,8 @@ const toDetails = (path: string) => {
     font-size: 28rpx;
   }
   .title_icon {
-    display: flex;
-    align-items: center;
+    @include flex_c();
+    justify-content: flex-end;
     @include set_w_h(120, fill);
     .all_text {
       margin-right: 10rpx;

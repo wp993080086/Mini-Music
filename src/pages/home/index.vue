@@ -4,6 +4,7 @@ import { onLoad } from '@dcloudio/uni-app'
 import homeHttp from '@/servers/api/home'
 import { baseStoreModule } from '@/store'
 import titleNav from '@/components/title-nav/index.vue'
+import songItem from '@/components/song-item/index.vue'
 import { IBannerItem, ISongListItem, INewSongListItem, IMvListItem, ISingerListItem } from './home'
 
 const baseStore = baseStoreModule()
@@ -75,7 +76,9 @@ onLoad(() => {
     <!-- 推荐新音乐 -->
     <title-nav title="推荐新音乐" path="../home/index" />
     <view class="recommend_new_song_box">
-      <h1>1</h1>
+      <template v-for="(item, index) in homeData.newSongList" :key="index">
+        <song-item :songInfo="item" />
+      </template>
     </view>
   </view>
 </template>
